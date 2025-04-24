@@ -1,0 +1,158 @@
+#root {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: 0.3rem 0;
+  display: flex;
+  flex-direction: column;
+  background-color: aquamarine;
+  height: 40px;
+}
+
+.Balance-section {
+  font-size: 1.5rem;
+  height: 100px;
+  background-color: rgba(134, 133, 133, 0.5);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 1rem 0;
+}
+.green {
+  color: green;
+  display: block;
+  font-size: 2rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: bold;
+}
+.red {
+  color: red;
+  display: block;
+  font-size: 2rem;
+}
+
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.add-rem-bal-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2rem;
+  background-color: rgba(77, 210, 199, 0.5);
+  border: 1px solid black;
+  width: 400px;
+  min-height: 600px;
+}
+
+label {
+  display: inline-block;
+  font-size: 1.55rem;
+  margin: 0.2rem 0;
+}
+.input-field {
+  width: 350px;
+  height: 40px;
+  border: none;
+  border-radius: 0.7rem;
+  padding: 0.5rem;
+  margin: 0.4rem 0;
+  font-size: 1rem;
+}
+.Addbtn {
+  width: 150px;
+  height: 40px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.Loan-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2rem;
+  background-color: rgba(77, 210, 199, 0.5);
+  border: 1px solid black;
+  width: 400px;
+  min-height: 600px;
+}
+
+.Loanbtn {
+  width: 150px;
+  height: 40px;
+  margin: 1rem;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.Mbtn {
+  width: 120px;
+  height: 40px;
+  margin: 0.4rem;
+  background-color: orangered;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+/* .transaction-history {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 2rem;
+  background-color: rgba(77, 210, 199, 0.5);
+  border: 1px solid black;
+  min-width: 400px;
+  text-align: center;
+}
+.transaction-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 350px;
+  padding: 12px;
+  margin: 10px 0;
+  background-color: gray;
+  color: whitesmoke;
+  font-size: 18px;
+  font-weight: bold;
+}
+.list {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.list p {
+  margin: 0 15px;
+}
+.list span {
+  margin: 0 15px;
+}
+
+.list strong {
+  margin: 0 15px;
+} */
