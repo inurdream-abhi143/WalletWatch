@@ -1,34 +1,7 @@
-const Header = ({
-  balance,
-  income,
-  expense,
-  loan,
-  loanPaid,
-  loanDue,
-  emi,
-  transactionList,
-}) => {
+const Header = ({ balance, income, expense, loan, loanPaid, loanDue, emi }) => {
   const TotalBalance = income - expense + loan + loanPaid;
   balance = TotalBalance;
-  const onView = (e) => {
-    e.preventDefault();
 
-    if (transactionList.length === 0) {
-      return alert("No transaction has made Yet");
-    }
-    {
-      const transactionString = transactionList
-        .map(
-          (tranx, index) =>
-            `${index + 1} ${tranx.type}: ${tranx.amount}-${tranx.description}`
-        )
-        .join("\n");
-
-      alert(
-        `Mini Statement\n\n ${transactionString}\n\n Available Balance: ${TotalBalance}`
-      );
-    }
-  };
   return (
     <>
       <div className="header">
@@ -56,9 +29,6 @@ const Header = ({
         <p>
           Loan Emi<span className="red">${emi}</span>
         </p>
-        <button className="Mbtn" onClick={onView}>
-          MiniStatement
-        </button>
       </div>
     </>
   );

@@ -118,41 +118,45 @@ label {
   font-size: 0.7rem;
   cursor: pointer;
 }
-/* .transaction-history {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  margin: 2rem;
-  background-color: rgba(77, 210, 199, 0.5);
-  border: 1px solid black;
-  min-width: 400px;
-  text-align: center;
-}
-.transaction-list {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 350px;
-  padding: 12px;
-  margin: 10px 0;
-  background-color: gray;
-  color: whitesmoke;
-  font-size: 18px;
-  font-weight: bold;
-}
-.list {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.list p {
-  margin: 0 15px;
-}
-.list span {
-  margin: 0 15px;
+.Pbtn {
+  width: 120px;
+  height: 40px;
+  margin: 0.4rem;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.7rem;
+  cursor: pointer;
 }
 
-.list strong {
-  margin: 0 15px;
-} */
+/* Table section */
+
+.table-section {
+  width: 800px;
+  margin: 40px auto;
+  padding-top: 40px;
+}
+
+/* Table Styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 2px solid black;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background-color: rgb(222, 207, 223);
+}
+tr {
+  height: 40px;
+}
+tr:nth-child(even) {
+  background-color: rgb(244, 180, 141);
+}
