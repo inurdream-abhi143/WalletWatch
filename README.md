@@ -46,4 +46,4 @@ npm run dev
 
 ---
 
-Let me know if you want a logo, emoji banners, or badges added too 👀💡
+
