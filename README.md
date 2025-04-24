@@ -1,10 +1,11 @@
-
 # 💰 WalletWatch
 
 WalletWatch is a simple personal finance tracker app built using **React + Vite**. It's designed to help users monitor their income, expenses, and loans, while providing an EMI calculator and a mini statement view for easy tracking.
 
 ![app screenshot](public/Screenshot%202025-04-24%20115234.png)
-![app screenshot](public/Screenshot%202025-04-24%20115945.png)
+![app screenshot](public/Screenshot%202025-04-24%20172421.png)
+![app screenshot](public/Screenshot%202025-04-24%20172433.png)
+)
 
 ## 🚀 Features
 
@@ -22,12 +23,10 @@ WalletWatch is a simple personal finance tracker app built using **React + Vite*
 
 ## 📦 Installation
 
-
 git clone https://github.com/your-username/wallewatch.git
 cd wallewatch
 npm install
 npm run dev
-
 
 ## 📌 Project Info
 
@@ -43,5 +42,3 @@ npm run dev
 - Add export/print functionality for mini statement
 
 ---
-
-
