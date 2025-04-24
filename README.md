@@ -1,10 +1,8 @@
-Nice work, Abhi! Here's a clean and professional `README.md` you can use for your GitHub repo:
 
----
+# 💰 WalletWatch
 
-# 💰 WalleWatch
+WalletWatch is a simple personal finance tracker app built using **React + Vite**. It's designed to help users monitor their income, expenses, and loans, while providing an EMI calculator and a mini statement view for easy tracking.
 
-WalleWatch is a simple personal finance tracker app built using **React + Vite**. It's designed to help users monitor their income, expenses, and loans, while providing an EMI calculator and a mini statement view for easy tracking.
 ![app screenshot](public/Screenshot%202025-04-24%20115234.png)
 ![app screenshot](public/Screenshot%202025-04-24%20115945.png)
 
@@ -24,12 +22,12 @@ WalleWatch is a simple personal finance tracker app built using **React + Vite**
 
 ## 📦 Installation
 
-```bash
+
 git clone https://github.com/your-username/wallewatch.git
 cd wallewatch
 npm install
 npm run dev
-```
+
 
 ## 📌 Project Info
 
@@ -46,4 +44,4 @@ npm run dev
 
 ---
 
-Let me know if you want a logo, emoji banners, or badges added too 👀💡
+
