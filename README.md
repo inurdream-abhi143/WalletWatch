@@ -7,8 +7,6 @@ WalletWatch is a simple personal finance tracker app built using **React + Vite*
 
 <!-- ![app screenshot](public/Screenshot%202025-04-24%20172433.png) -->
 
-)
-
 ## 🚀 Features
 
 - ➕ Add Income

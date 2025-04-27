@@ -15,6 +15,7 @@ const App = () => {
   const [loanDue, setLoanDue] = useState(0);
   const [emi, setEmi] = useState(0);
   const [showStatement, setShowStatement] = useState(false); // toggle state
+  // const [date, setDate] = useState(""); //Not Needed for adding the date
 
   const handleTransaction = (transaction) => {
     setTransactionList((prev) => [...prev, transaction]);

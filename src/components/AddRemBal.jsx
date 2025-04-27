@@ -1,5 +1,5 @@
 // its form where we can add or remove balance
-import { useReducer, useState } from "react";
+import {  useState } from "react";
 const AddRemBal = ({ handleTransaction }) => {
   // const reducer = (state, action) => {};
 
@@ -7,6 +7,7 @@ const AddRemBal = ({ handleTransaction }) => {
   const [type, setType] = useState("Income");
   const [amount, setAmount] = useState(0);
   const [description, setDescription] = useState("");
+
   const onAdd = (e) => {
     e.preventDefault();
     if (amount < 0) {
@@ -17,6 +18,7 @@ const AddRemBal = ({ handleTransaction }) => {
         type: type,
         amount: Number(amount),
         description: description,
+        date: new Date().toLocaleDateString(),
       };
       handleTransaction(transactionDetails);
       setAmount(0);
