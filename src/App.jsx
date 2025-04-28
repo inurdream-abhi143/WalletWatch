@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import AddRemBal from "./components/AddRemBal";
 import Loan from "./components/Loan";
@@ -17,8 +17,37 @@ const App = () => {
   const [showStatement, setShowStatement] = useState(false); // toggle state
   // const [date, setDate] = useState(""); //Not Needed for adding the date
 
+
+  useEffect(() => {
+    // Load transactionList from localStorage when the app starts
+    const storedTransactionList = localStorage.getItem("transactionList");
+    if (storedTransactionList) {
+      const parsedList = JSON.parse(storedTransactionList);
+      setTransactionList(parsedList);
+
+      // Recalculate balance, income, and expense from the loaded transactions
+      let tempBalance = 0;
+      let tempIncome = 0;
+      let tempExpense = 0;
+      parsedList.forEach((transaction) => {
+        if (transaction.type === "Income") {
+          tempBalance += transaction.amount;
+          tempIncome += transaction.amount;
+        } else if (transaction.type === "Expense") {
+          tempBalance -= transaction.amount;
+          tempExpense += transaction.amount;
+        }
+      });
+      setBalance(tempBalance);
+      setIncome(tempIncome);
+      setExpense(tempExpense);
+    }
+  }, []);
+
   const handleTransaction = (transaction) => {
-    setTransactionList((prev) => [...prev, transaction]);
+    const updatedList = [...transactionList, transaction];
+    setTransactionList(updatedList);
+
     if (transaction.type === "Income") {
       setBalance((prev) => prev + transaction.amount);
       setIncome((prev) => prev + transaction.amount);
@@ -26,6 +55,8 @@ const App = () => {
       setBalance((prev) => prev - transaction.amount);
       setExpense((prev) => prev + transaction.amount);
     }
+
+    localStorage.setItem("transactionList", JSON.stringify(updatedList));
   };
 
   const handleLoan = (loanDetails) => {

@@ -58,6 +58,14 @@ const MiniStatement = ({ transactionList, balance }) => {
               })
             )}
           </tbody>
+          <tfoot>
+            <tr>
+              <td colSpan="5" className="text-end mx-2 fs-3 py-2">
+                Available Balance{" "}
+                <span className="text-success fs-2">${balance}</span>
+              </td>
+            </tr>
+          </tfoot>
         </table>
       </div>
     </>

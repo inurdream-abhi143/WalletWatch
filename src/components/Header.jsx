@@ -1,5 +1,5 @@
 const Header = ({ balance, income, expense, loan, loanPaid, loanDue, emi }) => {
-  const TotalBalance = income - expense + loan + loanPaid;
+  const TotalBalance = (income - expense + loan - loanPaid).toFixed(2);
   balance = TotalBalance;
 
   return (
