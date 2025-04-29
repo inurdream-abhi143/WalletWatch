@@ -57,22 +57,26 @@ const Loan = ({ handleLoan }) => {
           value={loanDescription}
           onChange={(e) => setLoanDescription(e.target.value)}
         />
-        <label htmlFor="EmiRate">EmiRate</label>
-        <input
-          type="number"
-          placeholder="Enter the EmiRate(in %)"
-          className="input-field"
-          value={emiRate}
-          onChange={(e) => setEmiRate(e.target.value)}
-        />
-        <label htmlFor="EmiDuration">Emi Duration</label>
-        <input
-          type="number"
-          placeholder="Enter the Emi-Duration(in months)"
-          className="input-field"
-          value={emiDuration}
-          onChange={(e) => setEmiDuration(e.target.value)}
-        />
+        {loanType === "loan" && (
+          <>
+            <label htmlFor="EmiRate">EmiRate</label>
+            <input
+              type="number"
+              placeholder="Enter the EmiRate(in %)"
+              className="input-field"
+              value={emiRate}
+              onChange={(e) => setEmiRate(e.target.value)}
+            />
+            <label htmlFor="EmiDuration">Emi Duration</label>
+            <input
+              type="number"
+              placeholder="Enter the Emi-Duration(in months)"
+              className="input-field"
+              value={emiDuration}
+              onChange={(e) => setEmiDuration(e.target.value)}
+            />
+          </>
+        )}
 
         <button className="Loanbtn" onClick={updateLoan}>
           Add
