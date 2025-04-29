@@ -160,3 +160,8 @@ tr {
 tr:nth-child(even) {
   background-color: rgb(244, 180, 141);
 }
+.loan-history-header {
+  width: 80vw;
+  margin: 40px auto;
+  padding-top: 40px;
+}
