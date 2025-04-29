@@ -1,6 +1,5 @@
 import { useState } from "react";
 const Loan = ({ handleLoan }) => {
-  
   const [loanAmount, setLoanAmount] = useState(0);
   const [loanDescription, setLoanDescription] = useState("");
   const [emiRate, setEmiRate] = useState(0);
@@ -39,6 +38,7 @@ const Loan = ({ handleLoan }) => {
         >
           <option value="credit">Credit</option>
           <option value="debit">Debit</option>
+          <option value="loan">Loan</option>
         </select>
         <label htmlFor="loanamount">Amount</label>
         <input

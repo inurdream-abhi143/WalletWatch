@@ -1,11 +1,11 @@
 const Header = ({ balance, income, expense, loan, loanPaid, loanDue, emi }) => {
   const TotalBalance = (income - expense + loan - loanPaid).toFixed(2);
   balance = TotalBalance;
-
+  const UserName = "Guest";
   return (
     <>
       <div className="header">
-        <p>Hello Abhishek</p>
+        <p className="fs-2 text-center">Hello {UserName}</p>
       </div>
       <div className="Balance-section">
         <p>
@@ -24,7 +24,7 @@ const Header = ({ balance, income, expense, loan, loanPaid, loanDue, emi }) => {
           Loan Paid<span className="green">${loanPaid}</span>
         </p>
         <p>
-          Loan Due<span className="red">${loanDue}</span>
+          Loan Due<span className="red">${loanDue.toFixed(2)}</span>
         </p>
         <p>
           Loan Emi<span className="red">${emi}</span>

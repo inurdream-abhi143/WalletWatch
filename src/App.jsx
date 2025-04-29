@@ -17,7 +17,6 @@ const App = () => {
   const [showStatement, setShowStatement] = useState(false); // toggle state
   // const [date, setDate] = useState(""); //Not Needed for adding the date
 
-
   useEffect(() => {
     // Load transactionList from localStorage when the app starts
     const storedTransactionList = localStorage.getItem("transactionList");
@@ -62,8 +61,8 @@ const App = () => {
   const handleLoan = (loanDetails) => {
     const { type, amount, emiRate, emiDuration } = loanDetails;
     const principal = Number(amount);
-    const rate = emiRate / 100 / 12;
-    const time = emiDuration;
+    const rate = Number(emiRate) / 12 / 100;
+    const time = Number(emiDuration);
 
     if (type === "debit") {
       setLoanPaid((prev) => prev + principal);
@@ -71,15 +70,24 @@ const App = () => {
         const newLoanDue = prev - principal;
         return newLoanDue < 0 ? 0 : newLoanDue;
       });
+    } else if (type === "loan") {
+      if (rate === 0 || time === 0) {
+        return alert("Please Enter Valid Emi Rate and Duration");
+      }
+      {
+        setLoan((prev) => prev + principal);
+        const emi = Math.round(
+          (principal * rate * Math.pow(1 + rate, time)) /
+            (Math.pow(1 + rate, time) - 1)
+        );
+        const emiAmount = parseFloat(emi.toFixed(2));
+        setEmi(emiAmount);
+        const emiToPay = parseFloat((emiAmount * time).toFixed(2));
+        setLoanDue((prev) => prev + emiToPay);
+      }
     } else if (type === "credit") {
       setLoan((prev) => prev + principal);
-      const emi =
-        (principal * rate * Math.pow(1 + rate, time)) /
-        (Math.pow(1 + rate, time) - 1);
-      const emiAmount = parseFloat(emi.toFixed(2));
-      setEmi(emiAmount);
-      const emiToPay = parseFloat((emiAmount * time).toFixed(2));
-      setLoanDue((prev) => prev + emiToPay);
+      setLoanDue((prev) => prev + principal);
     }
   };
 
