@@ -95,6 +95,7 @@ const App = () => {
     } else if (type === "credit") {
       setLoan((prev) => prev + principal);
       setLoanDue((prev) => prev + principal);
+      emiToPay = principal;
     }
     const loanInfo = {
       type: type,
