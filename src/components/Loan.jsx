@@ -18,6 +18,7 @@ const Loan = ({ handleLoan }) => {
         description: loanDescription,
         emiRate: Number(emiRate),
         emiDuration: Number(emiDuration),
+        date: new Date().toLocaleDateString(),
       };
       handleLoan(loanDetails);
       setLoanAmount(0);

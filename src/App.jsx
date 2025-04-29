@@ -4,9 +4,11 @@ import AddRemBal from "./components/AddRemBal";
 import Loan from "./components/Loan";
 import MiniStatement from "./components/MiniStatement";
 import "./App.css";
+import { LoanHistory } from "./components/LoanHistory";
 
 const App = () => {
   const [transactionList, setTransactionList] = useState([]);
+  const [loanList, setLoanList] = useState([]);
   const [balance, setBalance] = useState(0);
   const [income, setIncome] = useState(0);
   const [expense, setExpense] = useState(0);
@@ -60,6 +62,11 @@ const App = () => {
 
   const handleLoan = (loanDetails) => {
     const { type, amount, emiRate, emiDuration } = loanDetails;
+
+    let emiToPay = 0;
+
+    let emiAmount = 0;
+
     const principal = Number(amount);
     const rate = Number(emiRate) / 12 / 100;
     const time = Number(emiDuration);
@@ -80,15 +87,27 @@ const App = () => {
           (principal * rate * Math.pow(1 + rate, time)) /
             (Math.pow(1 + rate, time) - 1)
         );
-        const emiAmount = parseFloat(emi.toFixed(2));
+        emiAmount = parseFloat(emi.toFixed(2));
         setEmi(emiAmount);
-        const emiToPay = parseFloat((emiAmount * time).toFixed(2));
+        emiToPay = parseFloat((emiAmount * time).toFixed(2));
         setLoanDue((prev) => prev + emiToPay);
       }
     } else if (type === "credit") {
       setLoan((prev) => prev + principal);
       setLoanDue((prev) => prev + principal);
     }
+    const loanInfo = {
+      type: type,
+      amount: principal,
+      description: loanDetails.description,
+      emiDuration: emiDuration,
+      emiRate: emiRate,
+      totalAmount: emiToPay,
+      emiperMonth: emiAmount,
+      date: loanDetails.date,
+    };
+    console.log(loanInfo);
+    setLoanList((prev) => [...prev, loanInfo]);
   };
 
   return (
@@ -120,6 +139,8 @@ const App = () => {
           <Loan handleLoan={handleLoan} />
         </div>
       )}
+
+      <LoanHistory loanList={loanList} />
     </>
   );
 };
