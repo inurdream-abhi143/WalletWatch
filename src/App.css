@@ -1,3 +1,4 @@
+/* General Reset */
 #root {
   margin: 0;
   padding: 0;
@@ -5,16 +6,19 @@
   box-sizing: border-box;
 }
 
+/* Header */
 .header {
   width: 100%;
   font-size: 1rem;
   margin-bottom: 0.3rem 0;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   background-color: aquamarine;
   height: 40px;
 }
 
+/* Balance Section */
 .Balance-section {
   font-size: 1.5rem;
   height: 100px;
@@ -37,6 +41,7 @@
   font-size: 2rem;
 }
 
+/* Content Container */
 .content-container {
   display: flex;
   justify-content: center;
@@ -44,6 +49,7 @@
   flex-wrap: wrap;
 }
 
+/* Add/Remove Balance Form */ 
 .add-rem-bal-form {
   display: flex;
   flex-direction: column;
@@ -82,6 +88,7 @@ label {
   transition: background-color 0.3s;
 }
 
+/* Loan Form */
 .Loan-form {
   display: flex;
   flex-direction: column;
@@ -107,31 +114,25 @@ label {
   transition: background-color 0.3s;
 }
 
-.Mbtn {
+/* Buttons */
+.Mbtn, .Pbtn {
   width: 120px;
   height: 40px;
   margin: 0.4rem;
-  background-color: orangered;
   color: white;
   border: none;
   border-radius: 0.5rem;
   font-size: 0.7rem;
   cursor: pointer;
+}
+.Mbtn {
+  background-color: orangered;
 }
 .Pbtn {
-  width: 120px;
-  height: 40px;
-  margin: 0.4rem;
   background-color: blue;
-  color: white;
-  border: none;
-  border-radius: 0.5rem;
-  font-size: 0.7rem;
-  cursor: pointer;
 }
 
-/* Table section */
-
+/* Table Section */
 .table-section {
   width: 800px;
   margin: 40px auto;
@@ -144,8 +145,7 @@ table {
   border-collapse: collapse;
 }
 
-th,
-td {
+th, td {
   border: 2px solid black;
   padding: 10px;
   text-align: center;
@@ -160,8 +160,76 @@ tr {
 tr:nth-child(even) {
   background-color: rgb(244, 180, 141);
 }
+
+/* Loan History Header */
 .loan-history-header {
   width: 80vw;
   margin: 40px auto;
   padding-top: 40px;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  
+  .header {
+    font-size: 0.9rem;
+    height: auto;
+    padding: 0.5rem;
+  }
+
+  .Balance-section {
+    flex-direction: column;
+    font-size: 1.2rem;
+    height: auto;
+    margin: 1rem 0;
+  }
+
+  .add-rem-bal-form, .Loan-form {
+    width: 90%;
+    min-height: 400px;
+    margin: 1rem;
+    align-items: center;
+  }
+
+  .input-field {
+    width: 100%;
+  }
+
+  .Addbtn, .Loanbtn, .Mbtn, .Pbtn {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .table-section {
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  table {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    font-size: 0.8rem;
+  }
+
+  .Balance-section {
+    font-size: 1rem;
+  }
+
+  .add-rem-bal-form, .Loan-form {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .Addbtn, .Loanbtn, .Mbtn, .Pbtn {
+    font-size: 0.8rem;
+  }
+
+  table {
+    font-size: 0.8rem;
+  }
+}
+

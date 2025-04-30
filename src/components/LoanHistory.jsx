@@ -1,23 +1,29 @@
 export const LoanHistory = ({ loanList }) => {
+  // const numberOfEmiLeft = (loan) => {
+  //   if (!loan.emiDuration || !loan.emisPaid) return "N/A";
+  //   return loan.emiDuration - loan.emisPaid;
+  // };
+  
   return (
     <>
       <div className="loan-history-header">
         <h2 className="fs-1 my3">Loan History</h2>
         <table className="table">
           <thead>
-            <tr className="table-header fs-4 text-center ">
+            <tr className="table-header fs-5 text-center ">
               <th>SR.No</th>
               <th>Type</th>
               <th>Loan Amount</th>
               <th>Loan Description</th>
               <th>
-                Emi Duration
-                <sub>/month</sub>
+                Duration
+                <sub>in months</sub>
               </th>
-              <th>Emi Rate</th>
+              <th>Rate</th>
               <th>Total Amount</th>
-              <th>EMi/Month</th>
+              <th>EMi Amount</th>
               <th>Date</th>
+              {/* <th>pay Emi</th> */}
             </tr>
           </thead>
           <tbody>
@@ -40,10 +46,15 @@ export const LoanHistory = ({ loanList }) => {
                     <td>{loan.totalAmount || " N / A"}</td>
                     <td>{loan.emiperMonth || "N/A"}</td>
                     <td>{loan.date || " N / A"}</td>
+                    {/* <td><button>Pay</button></td> */}
                   </tr>
                 );
               })
             )}
+            
+
+              
+             
           </tbody>
         </table>
       </div>

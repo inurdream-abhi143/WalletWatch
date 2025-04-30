@@ -1,6 +1,5 @@
 const Header = ({ balance, income, expense, loan, loanPaid, loanDue, emi }) => {
-  const TotalBalance = (income - expense + loan - loanPaid).toFixed(2);
-  balance = TotalBalance;
+
   const UserName = "Guest";
   return (
     <>
@@ -9,7 +8,7 @@ const Header = ({ balance, income, expense, loan, loanPaid, loanDue, emi }) => {
       </div>
       <div className="Balance-section">
         <p>
-          Balance<span className="green">${TotalBalance}</span>
+          Balance<span className="green">${balance}</span>
         </p>
         <p>
           Income<span className="green">${income}</span>
