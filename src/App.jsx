@@ -101,7 +101,7 @@ const App = () => {
     localStorage.setItem("transactionList", JSON.stringify(updatedList));
   };
   const handleLoan = (loanDetails) => {
-    const { type, amount, emiRate, emiDuration } = loanDetails;
+    const { type, amount, emiRate, emiDuration , loanId } = loanDetails;
 
     let emiToPay = 0;
 
@@ -138,6 +138,7 @@ const App = () => {
       emiToPay = principal;
     }
     const loanInfo = {
+      loanId: loanId,
       type: type,
       amount: principal,
       description: loanDetails.description,

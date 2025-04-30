@@ -1,4 +1,5 @@
 import { useState } from "react";
+import{v4 as uuidv4} from "uuid";
 const Loan = ({ handleLoan }) => {
   const [loanAmount, setLoanAmount] = useState(0);
   const [loanDescription, setLoanDescription] = useState("");
@@ -11,8 +12,11 @@ const Loan = ({ handleLoan }) => {
     if (loanAmount < 0) {
       return alert("Amount should be greater than 0");
     }
+
     {
+      const loanId = uuidv4().slice(0,4);
       const loanDetails = {
+        loanId: loanId,
         type: loanType,
         amount: Number(loanAmount),
         description: loanDescription,

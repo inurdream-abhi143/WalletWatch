@@ -3,6 +3,10 @@ export const LoanHistory = ({ loanList }) => {
   //   if (!loan.emiDuration || !loan.emisPaid) return "N/A";
   //   return loan.emiDuration - loan.emisPaid;
   // };
+// const handlePayment = (loanId, emiAmount) => {
+
+
+// }
   
   return (
     <>
@@ -11,7 +15,7 @@ export const LoanHistory = ({ loanList }) => {
         <table className="table">
           <thead>
             <tr className="table-header fs-5 text-center ">
-              <th>SR.No</th>
+              <th>LoanId</th>
               <th>Type</th>
               <th>Loan Amount</th>
               <th>Loan Description</th>
@@ -37,7 +41,7 @@ export const LoanHistory = ({ loanList }) => {
               loanList.map((loan, index) => {
                 return (
                   <tr key={index} className=" table-body fs-4 text-center">
-                    <td>{index + 1}</td>
+                    <td>{loan.loanId}</td>
                     <td>{loan.type}</td>
                     <td>{loan.amount}</td>
                     <td>{loan.description || " N / A"}</td>
@@ -46,7 +50,7 @@ export const LoanHistory = ({ loanList }) => {
                     <td>{loan.totalAmount || " N / A"}</td>
                     <td>{loan.emiperMonth || "N/A"}</td>
                     <td>{loan.date || " N / A"}</td>
-                    {/* <td><button>Pay</button></td> */}
+                    {/* <td><button onClick={()=>handlePayment(loan.loanId, loan.emiperMonth)} >Pay</button></td> */}
                   </tr>
                 );
               })
