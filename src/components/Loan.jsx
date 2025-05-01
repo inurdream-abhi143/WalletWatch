@@ -42,7 +42,7 @@ const Loan = ({ handleLoan }) => {
           onChange={(e) => setLoanType(e.target.value)}
         >
           <option value="credit">Credit</option>
-          <option value="debit">Debit</option>
+          {/* <option value="debit">Debit</option> */}
           <option value="loan">Loan</option>
         </select>
         <label htmlFor="loanamount">Amount</label>

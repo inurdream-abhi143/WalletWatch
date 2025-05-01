@@ -19,15 +19,15 @@ const Header = ({ balance, income, expense, loan, loanPaid, loanDue, emi }) => {
         <p>
           Loan<span className="red">${loan}</span>
         </p>
-        <p>
+        {/* <p>
           Loan Paid<span className="green">${loanPaid}</span>
         </p>
         <p>
           Loan Due<span className="red">${loanDue.toFixed(2)}</span>
-        </p>
-        <p>
+        </p> */}
+        {/* <p>
           Loan Emi<span className="red">${emi}</span>
-        </p>
+        </p> */}
       </div>
     </>
   );

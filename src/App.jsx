@@ -21,6 +21,9 @@ const App = () => {
  
   //For storing data in local storage 
 
+
+
+
   useEffect(() => {
     // Load transactionList from localStorage
   let storedTransactionList = localStorage.getItem("transactionList");
@@ -101,42 +104,44 @@ const App = () => {
     localStorage.setItem("transactionList", JSON.stringify(updatedList));
   };
   const handleLoan = (loanDetails) => {
-    const { type, amount, emiRate, emiDuration , loanId } = loanDetails;
-
+    const { type, amount, emiRate, emiDuration, loanId } = loanDetails;
+  
     let emiToPay = 0;
-
+    let newLoanDue = 0;
     let emiAmount = 0;
-
+  
     const principal = Number(amount);
     const rate = Number(emiRate) / 12 / 100;
     const time = Number(emiDuration);
-
-    if (type === "debit") {
-      setLoanPaid((prev) => prev + principal);
-      setLoanDue((prev) => {
-        const newLoanDue = prev - principal;
-        return newLoanDue < 0 ? 0 : newLoanDue;
-      });
-    } else if (type === "loan") {
+  
+    // if (type === "debit") {
+    //   setLoanPaid((prev) => prev + principal);
+    //   setLoanDue((prev) => {
+    //     const newLoanDue = prev - principal;
+    //     return newLoanDue < 0 ? 0 : newLoanDue;
+    //   });
+    // } else
+      if (type === "loan") {
       if (rate === 0 || time === 0) {
         return alert("Please Enter Valid Emi Rate and Duration");
       }
-      {
-        setLoan((prev) => prev + principal);
-        const emi = Math.round(
-          (principal * rate * Math.pow(1 + rate, time)) /
-            (Math.pow(1 + rate, time) - 1)
-        );
-        emiAmount = parseFloat(emi.toFixed(2));
-        setEmi(emiAmount);
-        emiToPay = parseFloat((emiAmount * time).toFixed(2));
-        setLoanDue((prev) => prev + emiToPay);
-      }
+      setLoan((prev) => prev + principal);
+      const emi = Math.round(
+        (principal * rate * Math.pow(1 + rate, time)) /
+          (Math.pow(1 + rate, time) - 1)
+      );
+      emiAmount = parseFloat(emi.toFixed(2));
+      setEmi(emiAmount);
+      emiToPay = parseFloat((emiAmount * time).toFixed(2));
     } else if (type === "credit") {
       setLoan((prev) => prev + principal);
-      setLoanDue((prev) => prev + principal);
+      newLoanDue = principal;
       emiToPay = principal;
     }
+  
+    // Calculate the updated loan due
+    newLoanDue = emiToPay;
+  
     const loanInfo = {
       loanId: loanId,
       type: type,
@@ -145,22 +150,19 @@ const App = () => {
       emiDuration: emiDuration,
       emiRate: emiRate,
       totalAmount: emiToPay,
+      loanDue: newLoanDue,
       emiperMonth: emiAmount,
       date: loanDetails.date,
     };
-    console.log(loanInfo);
-    // setLoanList((prev) => [...prev, loanInfo]);
-
-    const updatedLoanList = [...loanList , loanInfo]
-    setLoanList(updatedLoanList);
-
-
-    localStorage.setItem("loanList", JSON.stringify(updatedLoanList));
-    
- 
-
   
+    // Add the loan info to the loan list
+    const updatedLoanList = [...loanList, loanInfo];
+    setLoanList(updatedLoanList);
+  
+    // Save the updated loan list to localStorage
+    localStorage.setItem("loanList", JSON.stringify(updatedLoanList));
   };
+  
   useEffect(() => {
     const calculatedBalance = income - expense + loan - loanPaid;
     setBalance(parseFloat(calculatedBalance.toFixed(2)));
@@ -198,7 +200,7 @@ const App = () => {
         </div>
       )}
 
-      <LoanHistory loanList={loanList} />
+      <LoanHistory loanList={loanList} setLoanList={setLoanList}   balance={balance} setBalance={setBalance} />
     </>
   );
 };
