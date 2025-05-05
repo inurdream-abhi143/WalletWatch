@@ -1,47 +1,7 @@
 // its form where we can add or remove balance
 import { useReducer, useState } from "react";
+import TransactionFunction from "../reducers/TransactionFunction.jsx";
 const AddRemBal = ({ handleTransaction }) => {
-  
-
-
-  const reducerFunction =(state,action)=> {
-    switch(action.type){
-    case "type":
-return{
-  ...state,
-  type: action.payload
-
-}
-      
-   case "amount":
-
-   return{
-    ...state,
-    amount: action.payload
-
-   }
-
-  case "description":
-    return{
-
-      ...state,
-      description: action.payload
-
-    }
-    case "Reset":
-      return{
-        ...state,
-        type: "Income",
-      amount: "",
-      description : ""
-      }
-    default:
-     return  state
-    
-  }
-
-  }
-
   
   const initialState = {
     type :"Income",
@@ -49,15 +9,10 @@ return{
     description :""
   }
 
-  const [state , dispatch] = useReducer(reducerFunction ,   initialState); 
+  const [state , dispatch] = useReducer(TransactionFunction ,   initialState); 
   const [disable , setDisable] = useState(false)
   // console.log("before change " , disable); //  
 
-
-
-  // const [type, setType] = useState("Income");
-  // const [amount, setAmount] = useState(0);
-  // const [description, setDescription] = useState("");
 
   const onAdd = (e) => {
     e.preventDefault();
@@ -69,9 +24,6 @@ return{
       return alert("desciption can't be empty ");
      }
     setDisable(true);
-
-    
-        
      
       const transactionDetails = {
         type: state.type,
@@ -130,7 +82,8 @@ return{
         disabled={disable}>
           Add
         </button>
-        <p>Button disabled: {disable ? "Yes 🚫" : "No ✅"}</p>
+        {/* checking if disable button is orking  */}
+        {/* <p>Button disabled: {disable ? "Yes 🚫" : "No ✅"}</p> */} 
       </form>
     </>
   );
