@@ -1,44 +1,137 @@
-# 💰 WalletWatch
+# 💼 WalleWatch
 
-WalletWatch is a simple personal finance tracker app built using **React + Vite**. It's designed to help users monitor their income, expenses, and loans, while providing an EMI calculator and a mini statement view for easy tracking.
+**WalleWatch** is a lightweight personal finance manager built using **React** that helps you keep track of your 💰 income, 💸 expenses, and 🏦 loans — including EMI breakdown and loan history.
 
-![app screenshot](public/Screenshot%202025-04-24%20115234.png)
-![app screenshot](public/Screenshot%202025-04-29%20164555.png)
+---
 
-<!-- ![app screenshot](public/Screenshot%202025-04-24%20172433.png) -->
+## 📌 Features
 
-## 🚀 Features
+- ✅ Add Income and Expenses with descriptions  
+- 📈 Real-time balance updates  
+- 🏦 Loan management with **EMI calculation**  
+- 💳 View Loan History (Credit, Loan & Debit payments)  
+- 📃 Mini-statement for all transactions  
+- 💾 Data persists using **LocalStorage**  
+- 🔄 State management using `useState`, `useReducer`, and `useEffect`
 
-- ➕ Add Income
-- ➖ Add Expenses
-- 💸 Take Loans (with EMI calculation)
-- ✅ Track Loan Paid and Loan Due
-- 📄 Mini Statement view of transactions
+---
 
-## 🛠 Tech Stack
+## 🛠️ Tech Stack
 
-- React (Vite Setup)
-- JavaScript (ES6+)
-- CSS (Custom styling)
+| Tech         | Usage                     |
+|--------------|---------------------------|
+| React        | Frontend library          |
+| useReducer   | Form state handling       |
+| LocalStorage | Persistent data storage   |
+| CSS          | Basic styling             |
+| uuid         | Unique loan ID generator  |
 
-## 📦 Installation
+---
 
+## 🧠 State Management Breakdown
+
+- `useState` for:
+  - Income, Expense, Balance
+  - Loan, Loan Due, Loan Paid, EMI
+  - Transactions and Loans List
+- `useReducer` for:
+  - Transaction form (Add/Remove Balance)
+  - Loan form input states
+
+---
+
+## 🧾 How It Works
+
+1. **Add/Remove Balance:**  
+   Users can add income or expenses with an amount and description. Balance updates accordingly.
+
+2. **Take a Loan:**
+   - Enter principal, interest rate, and duration.
+   - EMI is calculated using the standard formula.
+   - Loan details are saved and displayed in the Loan History.
+
+3. **Repay Loan:**
+   - Loan repayments are treated as **"debit"** transactions.
+   - Loan Due and Loan Paid amounts are updated.
+
+4. **Mini Statement:**
+   - Shows a clean list of all transactions with types, dates, and descriptions.
+
+---
+
+## 📂 Project Structure
+
+```
+WalleWatch/
+│
+├── components/
+│   ├── AddRemBal.jsx
+│   ├── Header.jsx
+│   ├── Loan.jsx
+│   ├── MiniStatement.jsx
+│   └── LoanHistory.jsx
+│
+├── reducers/
+│   ├── TransactionFunction.jsx
+│   └── LoanReducer.jsx
+│
+├── App.jsx
+├── App.css
+└── index.js
+```
+
+---
+
+## 🧮 EMI Formula Used
+
+> EMI = (P × r × (1 + r)^n) / ((1 + r)^n – 1)
+
+Where:
+- `P` = Principal Amount  
+- `r` = Monthly Interest Rate  
+- `n` = Duration in Months
+
+---
+
+## 🗃️ Data Persistence
+
+All transactions and loans are stored in **localStorage**, so your data doesn't vanish when you reload like your motivation on a Monday 😪.
+
+---
+
+## 🧪 Future Enhancements (Ideas 💡)
+
+- 🔒 Firebase Authentication
+- 📊 Charts (Pie/Bar for income-expense & loan breakdown)
+- 🌐 Deploy to Vercel/Netlify
+- 🌙 Light/Dark Mode toggle
+- 📱 Mobile-first responsive UI
+- 🧪 Unit testing with Jest + React Testing Library
+
+---
+
+## 🙌 Acknowledgements
+
+Inspired by real-life budgeting headaches and YouTube tutorials 😅.  
+Special thanks to my MERN stack training journey and React docs!
+
+---
+
+## 🚀 Getting Started (For Devs)
+
+```bash
 git clone https://github.com/your-username/wallewatch.git
 cd wallewatch
 npm install
-npm run dev
+npm start
+```
 
-## 📌 Project Info
-
-- 📍 **Type**: Mini solo project
-- 📅 **Made During**: MERN Stack training
-- 🔗 **Deployment**: Not deployed yet (future improvement planned)
-
-## 🔮 Future Improvements
-
-- Add persistent storage (e.g., localStorage or backend)
-- Add filters and search to transaction history
-- Add dark/light mode toggle
-- Add export/print functionality for mini statement
+Make sure you have Node.js installed.
 
 ---
+
+## 🧑‍💻 Author
+
+**Abhishek Dhiman**  
+MERN Stack Trainee | React Enthusiast | Project: WalleWatch  
+_“Track your cash before it ghosts you.”_
