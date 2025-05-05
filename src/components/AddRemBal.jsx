@@ -1,31 +1,94 @@
 // its form where we can add or remove balance
-import { useState } from "react";
+import { useReducer, useState } from "react";
 const AddRemBal = ({ handleTransaction }) => {
-  // const reducer = (state, action) => {};
+  
 
-  // const [inputField, dispatch] = useReducer(reducer, []);
-  const [type, setType] = useState("Income");
-  const [amount, setAmount] = useState(0);
-  const [description, setDescription] = useState("");
+
+  const reducerFunction =(state,action)=> {
+    switch(action.type){
+    case "type":
+return{
+  ...state,
+  type: action.payload
+
+}
+      
+   case "amount":
+
+   return{
+    ...state,
+    amount: action.payload
+
+   }
+
+  case "description":
+    return{
+
+      ...state,
+      description: action.payload
+
+    }
+    case "Reset":
+      return{
+        ...state,
+        type: "Income",
+      amount: "",
+      description : ""
+      }
+    default:
+     return  state
+    
+  }
+
+  }
+
+  
+  const initialState = {
+    type :"Income",
+    amount :"",
+    description :""
+  }
+
+  const [state , dispatch] = useReducer(reducerFunction ,   initialState); 
+  const [disable , setDisable] = useState(false)
+  // console.log("before change " , disable); //  
+
+
+
+  // const [type, setType] = useState("Income");
+  // const [amount, setAmount] = useState(0);
+  // const [description, setDescription] = useState("");
 
   const onAdd = (e) => {
     e.preventDefault();
-    if (amount < 0) {
+    if (state.amount <=0 ) {
+     
       return alert("Amount should be greater than 0");
     }
-    {
+     if( state.description ===""){
+      return alert("desciption can't be empty ");
+     }
+    setDisable(true);
+
+    
+        
+     
       const transactionDetails = {
-        type: type,
-        amount: Number(amount),
-        description: description,
+        type: state.type,
+        amount: Number(state.amount),
+        description: state.description,
         date: new Date().toLocaleDateString(),
       };
       handleTransaction(transactionDetails);
-      setAmount(0);
-      setType("Income");
-      setDescription("");
+     
+      dispatch({type : "Reset"})
     
-    }
+      setTimeout(() => {
+        setDisable(false);
+      }, 500);
+    
+    
+
   };
   return (
     <>
@@ -34,8 +97,9 @@ const AddRemBal = ({ handleTransaction }) => {
         <select
           id="type"
           className="input-field"
-          value={type}
-          onChange={(e) => setType(e.target.value)}
+          value={state.type}
+          onChange={(e) => dispatch({type:"type" , payload : e.target.value})}
+         
         >
           <option value="Income">Income</option>
           <option value="Expense">Expense</option>
@@ -46,8 +110,9 @@ const AddRemBal = ({ handleTransaction }) => {
           id="amount"
           placeholder="Enter amount"
           className="input-field"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          value={state.amount}
+          onChange={(e) =>dispatch({type:"amount"  , payload : e.target.value}) }
+          
         />
 
         <label htmlFor="description">Description</label>
@@ -56,12 +121,16 @@ const AddRemBal = ({ handleTransaction }) => {
           id="description"
           placeholder="Enter description"
           className="input-field"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={state.description}
+          onChange={(e) =>dispatch({type:"description"  , payload : e.target.value}) }
+         
+          
         />
-        <button type="submit" className="Addbtn" onClick={onAdd}>
+        <button type="submit" className="Addbtn" onClick={onAdd}
+        disabled={disable}>
           Add
         </button>
+        <p>Button disabled: {disable ? "Yes 🚫" : "No ✅"}</p>
       </form>
     </>
   );

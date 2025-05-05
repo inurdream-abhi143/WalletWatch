@@ -1,4 +1,4 @@
-const Header = ({ balance, income, expense, loan, loanPaid, loanDue, emi }) => {
+const Header = ({ balance, income, expense, loan }) => {
 
   const UserName = "Guest";
   return (

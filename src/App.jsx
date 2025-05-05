@@ -178,10 +178,8 @@ const App = () => {
           income={income}
           expense={expense}
           loan={loan}
-          loanPaid={loanPaid}
-          loanDue={loanDue}
-          emi={emi}
-          transactionList={transactionList}
+         
+          
         />
         <button
           onClick={() => setShowStatement((prev) => !prev)}
