@@ -5,8 +5,7 @@ return{
   ...state,
   type: action.payload
 
-}
-      
+}    
    case "amount":
 
    return{
